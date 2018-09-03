@@ -47,13 +47,13 @@ public class ProductController implements HealthIndicator {
         List<Product> products = productDao.findAll();
 
         if(products.isEmpty()) throw new ProductNotFoundException("Aucun produit n'est disponible à la vente");
-
+        log.info("Limite du produit ----------------->" + appProperties.getLimitDeProduits());
         List<Product> listeLimitee = products.subList(0, appProperties.getLimitDeProduits());
 
 
         log.info("Récupération de la liste des produits");
 
-        return listeLimitee;
+        return products;
 
     }
 

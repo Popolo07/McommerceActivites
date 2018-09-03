@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+    <title>Mcommerce</title>
+
+    <link rel="stylesheet" type="text/css"
+          href="http://localhost:8080/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/expedition.css"/>
+</head>
+<body>
+
+
+<div class="container">
+
+    <h1 class="text-center">Application Mcommerce</h1>
+	<h1 class="text-center">Exercice 2</h1>
+    <div class="row">
+        <div class="col-md-4 mx-auto mt-5 text-center">
+
+			<p><span>Commande n : </span>
+            <span th:text="${expedition.idCommande}" class="font-weight-bold"></span></p>
+
+			 
+            <p>Etat de la commande : <span th:text="${expedition.etat}" class="font-weight-bold"></span></p>
+            <p th:if="${expedition.etat==0}">
+                <span class="EnPreparation">En Preparation</span>
+            </p>
+
+            <p th:if="${expedition.etat==1}">
+                <span class="Expediee">Expédiée</span>
+            </p>
+            <p th:if="${expedition.etat==2}">
+                <span class="Livree">Livrée</span>
+            </p>
+            <p th:if="${expedition.etat>2}">
+                <span class="EnPreparation">Suivi commande invalide</span>
+            </p>
+
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="http://localhost:8080/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

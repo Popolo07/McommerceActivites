@@ -1,0 +1,14 @@
+.Livree {
+	color:green;
+	font-weight: bold;
+	
+}
+.Expediee {
+	color:orange;	
+	font-weight: bold;
+}
+.EnPreparation {
+	color:red;	
+	font-weight: bold;	
+    font-style: italic;
+}
