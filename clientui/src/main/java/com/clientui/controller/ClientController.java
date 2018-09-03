@@ -1,9 +1,11 @@
 package com.clientui.controller;
 
 import com.clientui.beans.CommandeBean;
+import com.clientui.beans.ExpeditionBean;
 import com.clientui.beans.PaiementBean;
 import com.clientui.beans.ProductBean;
 import com.clientui.proxies.MicroserviceCommandeProxy;
+import com.clientui.proxies.MicroserviceExpeditionProxy;
 import com.clientui.proxies.MicroservicePaiementProxy;
 import com.clientui.proxies.MicroserviceProduitsProxy;
 import org.slf4j.Logger;
@@ -34,6 +36,9 @@ public class ClientController {
     @Autowired
     private MicroservicePaiementProxy paiementProxy;
 
+    @Autowired
+    private MicroserviceExpeditionProxy expeditionProxy;   
+    
 
     Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -123,7 +128,20 @@ public class ClientController {
 
         return "confirmation";
     }
+    /*
+    * Étape (2)
+    * Opération qui récupère les détails d'un produit
+    * On passe l'objet "expedition" récupéré et qui contient le suivi 
+    * */
+    @RequestMapping("/suivi/{id}")
+    public String expedition(@PathVariable int id,  Model model){
 
+        ExpeditionBean expedition = expeditionProxy.recupererUneExpedition(id);
+        System.out.println("Object expedition  " + expedition);
+        model.addAttribute("expedition", expedition);
+
+        return "expedition";
+    }
     //Génére une serie de 16 chiffres au hasard pour simuler vaguement une CB
     private Long numcarte() {
 
